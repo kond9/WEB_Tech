@@ -54,5 +54,11 @@ body {
   min-height: 75rem;
 }
 .tags{
-    max-width: 270px;
+    max-width: 300px;
+}
+.tags-button{
+    margin: 3px;
+}
+.nav-title{
+    margin: 10px;
 }

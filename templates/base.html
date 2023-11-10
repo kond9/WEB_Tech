@@ -5,72 +5,81 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet">
     <link href="../static/css/main.css" rel="stylesheet">
 
-
 </head>
+
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Top navbar</a>
+
+        <a class="navbar-brand float" href="#">Questionnaire</a>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+
+
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <img src="../static/img/avatar.jpg" alt="" width="50" height="50">
+        <ul class="navbar-nav mb-md-0">
+            <div class="row nav-item">
+                <li>
+                    <a class="nav-link active" aria-current="page" href="#">Dr.Papper</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
+                <div class="col-6">
+
+                    <a class="nav-link" href="#">settings</a>
+
+                </div>
+                <div class="col-6">
+
+                    <a class="nav-link" href="#">log out</a>
+
+                </div>
+            </div>
+
+        </ul>
     </div>
 </nav>
 
-<main class="flex-shrink-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-8">
-            </div>
-            <div class="col-4">
-                <div class="row">
-                    <h2>Popular Tags</h2>
-                    <div class="tags">
-                        <button type="button" class="btn btn-outline-primary">perl</button>
-                        <button type="button" class="btn btn-outline-secondary">python</button>
-                        <button type="button" class="btn btn-outline-success">TechnoPark</button>
-                        <button type="button" class="btn btn-outline-danger">MySQL</button>
-                        <button type="button" class="btn btn-outline-warning">django</button>
-                        <button type="button" class="btn btn-outline-info">Mail.ru</button>
-                        <button type="button" class="btn btn-outline-dark">Voloshin</button>
-                        <button type="button" class="btn btn-outline-light">Firefox</button>
-                    </div>
-                    <h2>Best Members</h2>
-                    <ul class="list-group" style="margin-left: 20px; max-width: 200px; ">
-                        <li class="list-group-item"><a href="">Mr.Freeman</a></li>
-                        <li class="list-group-item"><a href="">Fr.House</a></li>
-                        <li class="list-group-item"><a href="">Bender</a></li>
-                        <li class="list-group-item"><a href="">Queen Victoria</a></li>
-                        <li class="list-group-item"><a href="">V.Pupkin</a></li>
-                    </ul>
+<main class="container">
+
+    <div class="row">
+        <div class="col-9">
+        </div>
+        <div class="col-3">
+            <div class="row">
+                <h2>Popular Tags</h2>
+                <div class="tags">
+                    <button type="button" class="btn btn-outline-primary tags-button">perl</button>
+                    <button type="button" class="btn btn-outline-secondary tags-button">python</button>
+                    <button type="button" class="btn btn-outline-success tags-button">TechnoPark</button>
+                    <button type="button" class="btn btn-outline-danger tags-button">MySQL</button>
+                    <button type="button" class="btn btn-outline-warning tags-button">django</button>
+                    <button type="button" class="btn btn-outline-info tags-button">Mail.ru</button>
+                    <button type="button" class="btn btn-outline-dark tags-button">Voloshin</button>
+                    <button type="button" class="btn btn-outline-primary tags-button">Firefox</button>
                 </div>
+
+                <h2>Best Members</h2>
+                <ul class="list-group" style="margin-left: 20px; max-width: 200px; ">
+                    <li class="list-group-item"><a href="">Mr.Freeman</a></li>
+                    <li class="list-group-item"><a href="">Dr.House</a></li>
+                    <li class="list-group-item"><a href="">Bender</a></li>
+                    <li class="list-group-item"><a href="">Queen Victoria</a></li>
+                    <li class="list-group-item"><a href="">V.Pupkin</a></li>
+                </ul>
             </div>
         </div>
     </div>
 </main>
-
-
 <script src="../static/js/bootstrap.bundle.min.js"></script>
 <script src="../static/js/main.js"></script>
-
 </body>
 </html>
