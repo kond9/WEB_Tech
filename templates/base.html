@@ -11,41 +11,47 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <div class="container-fluid">
+        <div class="col-3 ">
+            <a class="navbar-brand float" href="#">Questionnaire</a>
+        </div>
+        <div class="col-3"></div>
 
-        <a class="navbar-brand float" href="#">Questionnaire</a>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="col-3">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">ASK!</button>
+            </form>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <img src="../static/img/avatar.jpg" alt="" width="50" height="50">
+                <ul class="navbar-nav mb-md-0">
+                    <div class="row nav-item">
+                        <li>
+                            <a class="nav-link active" aria-current="page" href="#">Dr.Papper</a>
+                        </li>
+                        <div class="col-6">
 
+                            <a class="nav-link" href="#">settings</a>
 
-    </div>
+                        </div>
+                        <div class="col-6">
 
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <img src="../static/img/avatar.jpg" alt="" width="50" height="50">
-        <ul class="navbar-nav mb-md-0">
-            <div class="row nav-item">
-                <li>
-                    <a class="nav-link active" aria-current="page" href="#">Dr.Papper</a>
-                </li>
-                <div class="col-6">
+                            <a class="nav-link" href="#">log out</a>
 
-                    <a class="nav-link" href="#">settings</a>
+                        </div>
+                    </div>
 
-                </div>
-                <div class="col-6">
-
-                    <a class="nav-link" href="#">log out</a>
-
-                </div>
+                </ul>
             </div>
-
-        </ul>
+        </div>
     </div>
+
 </nav>
 
 <main class="container">
