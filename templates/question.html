@@ -1,222 +1,97 @@
-<!doctype html>
-<html lang="en">
-<head>
+{% extends 'layouts/base.html' %}
 
-    <link href="../static/css/bootstrap.css" rel="stylesheet">
-    <link href="../static/css/main.css" rel="stylesheet">
+{% block content %}
+<div class="row question" style="border: 3px solid grey">
+    <div class="col-3">
+        <img src="../static/img/ico_avatar.png" alt="" class="question-image">
+        <br>
+        <button class="btn btn-primary">5</button>
+        <button class="like-btn" style="display: inline-block;">
+            <img src="../static/img/like.png" alt="" style="width: 20px;height: 22px;">
+        </button>
+        <button class="like-btn" style="display: inline-block;">
+            <img src="../static/img/dislike_icon.png" alt="" style="width: 20px;height: 22px;">
+        </button>
 
-</head>
-
-<body class="d-flex flex-column h-100">
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-        <div class="container-fluid">
-            <div class="col-3 ">
-                <a class="navbar-brand float" href="#">Questionnaire</a>
-            </div>
-            <div class="col-3"></div>
-
-            <div class="col-3">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">ASK!</button>
-                </form>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="col-1"></div>
-            <div class="col-2">
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <img src="../static/img/avatar.jpg" alt="" width="50" height="50">
-                    <ul class="navbar-nav mb-md-0">
-                        <div class="row nav-item">
-                            <li>
-                                <a class="nav-link active" aria-current="page" href="#">Dr.Papper</a>
-                            </li>
-                            <div class="col-6">
-
-                                <a class="nav-link" href="#">settings</a>
-
-                            </div>
-                            <div class="col-6">
-
-                                <a class="nav-link" href="#">log out</a>
-
-                            </div>
-                        </div>
-
-                    </ul>
-                </div>
-            </div>
+    </div>
+    <div class="col-9">
+        <div class="question-title">{{question.title}}</div>
+        <div class="question-text">
+            {{question.content}}
         </div>
+        <br>
+        <p style="display: inline-block;">
+            Tags: <a href="#1">black-jack</a>
+            <a href="#2">bender</a>
+        </p>
+    </div>
+</div>
 
-    </nav>
-</header>
-<main class="container">
+<div class="row question">
+    <div class="col-3">
+        <img src="../static/img/ico_avatar.png" alt="" class="question-image">
+        <br>
+        <button class="btn btn-primary">5</button>
+        <button class="like-btn" style="display: inline-block;">
+            <img src="../static/img/like.png" alt="" style="width: 20px;height: 22px;">
+        </button>
+        <button class="like-btn" style="display: inline-block;">
+            <img src="../static/img/dislike_icon.png" alt="" style="width: 20px;height: 22px;">
+        </button>
 
-    <div class="row">
-        <div class="col-9">
-            <div class="row question" style="border: 3px solid grey">
-                <div class="col-3">
-                    <img src="../static/img/ico_avatar.png" alt="" class="question-image">
-                    <br>
-                    <button class="btn btn-primary">5</button>
-                    <button class="like-btn" style="display: inline-block;">
-                        <img src="../static/img/like.png" alt="" style="width: 20px;height: 22px;">
-                    </button>
-                    <button class="like-btn" style="display: inline-block;">
-                        <img src="../static/img/dislike_icon.png" alt="" style="width: 20px;height: 22px;">
-                    </button>
+    </div>
+    <div class="col-9">
 
-                </div>
-                <div class="col-9">
-                    <div class="question-title">How to build a moon park?</div>
-                    <div class="question-text">
-                        Lorem ipsum - dolor sit amet, consectetuer adipscing elit, sed diam nonummy nibh euismod
-                        tincidunt ut laoreet dolore magma aliqiuam erat volutpat. Ut wisi enim ad minim veniam, quis
-                        nostrud exerci tation ullamcorper suscipit lobortis niel ut aliquip ex ea commodo consequat.
-                    </div>
-                    <br>
-                    <p style="display: inline-block;">
-                        Tags: <a href="#1">black-jack</a>
-                        <a href="#2">bender</a>
-                    </p>
-                </div>
-            </div>
+        <div class="question-text">
+            First of all I would like to thank you for the invitation to participate in such a... Russia is
+            the huge territory, which in many respects needs to be render habitable.
+        </div>
+        <br>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+            <label class="form-check-label" for="flexCheckChecked">
+                Correct!
+            </label>
+        </div>
+        </p>
+    </div>
+</div>
 
-            <div class="row question">
-                <div class="col-3">
-                    <img src="../static/img/ico_avatar.png" alt="" class="question-image">
-                    <br>
-                    <button class="btn btn-primary">5</button>
-                    <button class="like-btn" style="display: inline-block;">
-                        <img src="../static/img/like.png" alt="" style="width: 20px;height: 22px;">
-                    </button>
-                    <button class="like-btn" style="display: inline-block;">
-                        <img src="../static/img/dislike_icon.png" alt="" style="width: 20px;height: 22px;">
-                    </button>
+<div class="row question">
+    <div class="col-3">
+        <img src="../static/img/ico_avatar.png" alt="" class="question-image">
+        <br>
+        <button class="btn btn-primary">3</button>
+        <button class="like-btn" style="display: inline-block;">
+            <img src="../static/img/like.png" alt="" style="width: 20px;height: 22px;">
+        </button>
+        <button class="like-btn" style="display: inline-block;">
+            <img src="../static/img/dislike_icon.png" alt="" style="width: 20px;height: 22px;">
+        </button>
 
-                </div>
-                <div class="col-9">
+    </div>
+    <div class="col-9">
 
-                    <div class="question-text">
-                        First of all I would like to thank you for the invitation to participate in such a... Russia is
-                        the huge territory, which in many respects needs to be render habitable.
-                    </div>
-                    <br>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked">
-                            Correct!
-                        </label>
-                    </div>
-                    </p>
-                </div>
-            </div>
-
-            <div class="row question">
-                <div class="col-3">
-                    <img src="../static/img/ico_avatar.png" alt="" class="question-image">
-                    <br>
-                    <button class="btn btn-primary">3</button>
-                    <button class="like-btn" style="display: inline-block;">
-                        <img src="../static/img/like.png" alt="" style="width: 20px;height: 22px;">
-                    </button>
-                    <button class="like-btn" style="display: inline-block;">
-                        <img src="../static/img/dislike_icon.png" alt="" style="width: 20px;height: 22px;">
-                    </button>
-
-                </div>
-                <div class="col-9">
-
-                    <div class="question-text">
-                        First of all I would like to thank you for the invitation to participate in such a... Russia is
-                        the huge territory, which in many respects needs to be render habitable.
-                    </div>
-                    <br>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            Correct!
-                        </label>
-                    </div>
-                    </p>
-                </div>
-            </div>
-            <br>
-            <div class="mb-3">
+        <div class="question-text">
+            First of all I would like to thank you for the invitation to participate in such a... Russia is
+            the huge territory, which in many respects needs to be render habitable.
+        </div>
+        <br>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">
+                Correct!
+            </label>
+        </div>
+        </p>
+    </div>
+</div>
+<br>
+<div class="mb-3">
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                           placeholder="Enter your answer here."></textarea>
-                <br>
-                <button class="btn btn-success">Answer!</button>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="row">
-                <h2>Popular Tags</h2>
-                <div class="tags mb-4">
-                    <button type="button" class="btn btn-outline-primary tags-button">perl</button>
-                    <button type="button" class="btn btn-outline-secondary tags-button">python</button>
-                    <button type="button" class="btn btn-outline-success tags-button">TechnoPark</button>
-                    <button type="button" class="btn btn-outline-danger tags-button">MySQL</button>
-                    <button type="button" class="btn btn-outline-warning tags-button">django</button>
-                    <button type="button" class="btn btn-outline-info tags-button">Mail.ru</button>
-                    <button type="button" class="btn btn-outline-dark tags-button">Voloshin</button>
-                    <button type="button" class="btn btn-outline-primary tags-button">Firefox</button>
-                </div>
+    <br>
+    <button class="btn btn-success">Answer!</button>
+</div>
 
-                <h2>Best Members</h2>
-                <ul class="list-group mb-4" style="margin-left: 20px; max-width: 200px; ">
-                    <li class="list-group-item"><a href="">Mr.Freeman</a></li>
-                    <li class="list-group-item"><a href="">Dr.House</a></li>
-                    <li class="list-group-item"><a href="">Bender</a></li>
-                    <li class="list-group-item"><a href="">Queen Victoria</a></li>
-                    <li class="list-group-item"><a href="">V.Pupkin</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</main>
-<footer>
-    <div class="card-group">
-        <div class="card">
-            <a href="https://t.me/kond9"><img src="../static/img/tg.jpg" class="card-img-top" height="300"
-                                              style="padding: 10%" alt="..."></a>
-            <div class="card-body">
-                <h5 class="card-title">Telegram</h5>
-                <p class="card-text">Contact through telegram</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 10.11.2023</small>
-            </div>
-        </div>
-        <div class="card">
-            <a href="mailto:mail@example.com"><img src="../static/img/gmail.jpg" class="card-img-top" height="300"
-                                                   style="padding: 10%" alt="..."></a>
-            <div class="card-body">
-                <h5 class="card-title">Gmail</h5>
-                <p class="card-text">Contact through Gmail</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 10.11.2023</small>
-            </div>
-        </div>
-        <div class="card">
-            <a href="https://vk.com/pikita_nlyonkin"><img src="../static/img/vk.jpg" class="card-img-top" height="300"
-                                                          style="padding: 10%" alt="..."></a>
-            <div class="card-body">
-                <h5 class="card-title">VK</h5>
-                <p class="card-text">Contact through VK</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 10.11.2023</small>
-            </div>
-        </div>
-    </div>
-</footer>
-<script src="../static/js/bootstrap.bundle.min.js"></script>
-<script src="../static/js/main.js"></script>
-</body>
-</html>
+{% endblock %}
