@@ -28,7 +28,7 @@ def question(request, question_id):
 
 def hot(request):
     page = request.GET.get('page', 1)
-    return render(request, 'index.html', {'questions': paginate(QUESTIONS, page)})
+    return render(request, 'hot.html', {'questions': paginate(QUESTIONS, page)})
 
 def tag(request, tag_name):
     page = request.GET.get('page', 1)
