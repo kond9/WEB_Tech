@@ -10,7 +10,7 @@ QUESTIONS = [
 ]
 
 
-def paginate(objects, page, per_page=15):
+def paginate(objects, page, per_page=30):
     paginator = Paginator(objects, per_page)
 
     return paginator.page(page)
@@ -25,3 +25,23 @@ def index(request):
 def question(request, question_id):
     item = QUESTIONS[question_id]
     return render(request, 'question.html', {'question': item})
+
+def hot(request):
+    page = request.GET.get('page', 1)
+    return render(request, 'index.html', {'questions': paginate(QUESTIONS, page)})
+
+def tag(request, tag_name):
+    page = request.GET.get('page', 1)
+    return render(request, 'tag.html', {'questions': paginate(QUESTIONS, page), 'tag':tag_name})
+
+def login(request):
+    return render(request, 'login.html')
+
+def signup(request):
+    return render(request, 'signup.html')
+
+def ask(request):
+    return render(request, 'ask.html')
+
+
+
