@@ -1,169 +1,50 @@
-<!doctype html>
-<html lang="en">
-<head>
+{% extends 'layouts/base.html' %}
 
-    <link href="../static/css/bootstrap.css" rel="stylesheet">
-    <link href="../static/css/main.css" rel="stylesheet">
+{% load static %}
 
-</head>
+{% block content %}
+<div class="col-5">
+    <h1 style="display: inline-block; margin-right: 40px">Log In</h1>
+    <p class="text-danger" style="font-size: 20px;">Sorry, wrong password!</p>
 
-<body class="d-flex flex-column h-100">
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-        <div class="container-fluid">
-            <div class="col-3 ">
-                <a class="navbar-brand float" href="#">Questionnaire</a>
-            </div>
-            <div class="col-3"></div>
-
-            <div class="col-3">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">ASK!</button>
-                </form>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="col-1"></div>
-            <div class="col-2">
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <img src="../static/img/avatar.jpg" alt="" width="50" height="50">
-                    <ul class="navbar-nav mb-md-0">
-                        <div class="row nav-item">
-                            <li>
-                                <a class="nav-link active" aria-current="page" href="#">Dr.Papper</a>
-                            </li>
-                            <div class="col-6">
-
-                                <a class="nav-link" href="#">settings</a>
-
-                            </div>
-                            <div class="col-6">
-
-                                <a class="nav-link" href="#">log out</a>
-
-                            </div>
-                        </div>
-
-                    </ul>
-                </div>
-            </div>
+    <div class="row g-3 align-items-center mb-3">
+        <div class="col-2">
+            <label for="inputPassword6" class="col-form-label" style="font-weight: bold">Login</label>
+        </div>
+        <div class="col-auto">
+            <input type="email" id="inputEmail" class="form-control" style="border: 2px solid grey"
+                   placeholder="Enter your login here">
         </div>
 
-    </nav>
-</header>
-<main class="container">
-
-    <div class="row">
-        <div class="col-5">
-            <h1 style="display: inline-block; margin-right: 40px">Log In</h1>
-            <p class="text-danger" style="font-size: 20px;">Sorry, wrong password!</p>
-
-            <div class="row g-3 align-items-center mb-3">
-                <div class="col-2">
-                    <label for="inputPassword6" class="col-form-label" style="font-weight: bold">Login</label>
-                </div>
-                <div class="col-auto">
-                    <input type="email" id="inputEmail" class="form-control" style="border: 2px solid grey"
-                           placeholder="Enter your login here">
-                </div>
-
-            </div>
-            <div class="row g-3 align-items-center mb-3">
-                <div class="col-2">
-                    <label for="inputPassword6" class="col-form-label" style="font-weight: bold">Password</label>
-                </div>
-                <div class="col-auto">
-                    <input type="password" id="inputPassword6" class="form-control" style="border: 2px solid grey"
-                           aria-describedby="passwordHelpInline" placeholder="Enter your password here">
-                </div>
-                <div class="col-auto">
+    </div>
+    <div class="row g-3 align-items-center mb-3">
+        <div class="col-2">
+            <label for="inputPassword6" class="col-form-label" style="font-weight: bold">Password</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" id="inputPassword6" class="form-control" style="border: 2px solid grey"
+                   aria-describedby="passwordHelpInline" placeholder="Enter your password here">
+        </div>
+        <div class="col-auto">
     <span id="passwordHelpInline" class="form-text">
       Must be 8-20 characters long.
     </span>
-                </div>
-            </div>
-            <div class="row g-3 align-items-center mb-3">
-                <div class="col-2"></div>
-                <br>
-                <div class="col-10">
-                    <button class="btn btn-success">Log in!</button>
-                    <br>
-                    <br>
-                    <a href="">create new account</a>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-4">
-
-        </div>
-        <div class="col-3">
-            <div class="row">
-                <h2>Popular Tags</h2>
-                <div class="tags mb-4">
-                    <button type="button" class="btn btn-outline-primary tags-button">perl</button>
-                    <button type="button" class="btn btn-outline-secondary tags-button">python</button>
-                    <button type="button" class="btn btn-outline-success tags-button">TechnoPark</button>
-                    <button type="button" class="btn btn-outline-danger tags-button">MySQL</button>
-                    <button type="button" class="btn btn-outline-warning tags-button">django</button>
-                    <button type="button" class="btn btn-outline-info tags-button">Mail.ru</button>
-                    <button type="button" class="btn btn-outline-dark tags-button">Voloshin</button>
-                    <button type="button" class="btn btn-outline-primary tags-button">Firefox</button>
-                </div>
-
-                <h2>Best Members</h2>
-                <ul class="list-group mb-4" style="margin-left: 20px; max-width: 200px; ">
-                    <li class="list-group-item"><a href="">Mr.Freeman</a></li>
-                    <li class="list-group-item"><a href="">Dr.House</a></li>
-                    <li class="list-group-item"><a href="">Bender</a></li>
-                    <li class="list-group-item"><a href="">Queen Victoria</a></li>
-                    <li class="list-group-item"><a href="">V.Pupkin</a></li>
-                </ul>
-            </div>
         </div>
     </div>
-</main>
-<footer>
-    <div class="card-group">
-        <div class="card">
-            <a href="https://t.me/kond9"><img src="../static/img/tg.jpg" class="card-img-top" height="300"
-                                              style="padding: 10%" alt="..."></a>
-            <div class="card-body">
-                <h5 class="card-title">Telegram</h5>
-                <p class="card-text">Contact through telegram</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 10.11.2023</small>
-            </div>
-        </div>
-        <div class="card">
-            <a href="mailto:mail@example.com"><img src="../static/img/gmail.jpg" class="card-img-top" height="300"
-                                                   style="padding: 10%" alt="..."></a>
-            <div class="card-body">
-                <h5 class="card-title">Gmail</h5>
-                <p class="card-text">Contact through Gmail</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 10.11.2023</small>
-            </div>
-        </div>
-        <div class="card">
-            <a href="https://vk.com/pikita_nlyonkin"><img src="../static/img/vk.jpg" class="card-img-top" height="300"
-                                                          style="padding: 10%" alt="..."></a>
-            <div class="card-body">
-                <h5 class="card-title">VK</h5>
-                <p class="card-text">Contact through VK</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 10.11.2023</small>
-            </div>
+    <div class="row g-3 align-items-center mb-3">
+        <div class="col-2"></div>
+        <br>
+        <div class="col-10">
+            <button class="btn btn-success">Log in!</button>
+            <br>
+            <br>
+            <a href="">create new account</a>
         </div>
     </div>
-</footer>
-<script src="../static/js/bootstrap.bundle.min.js"></script>
-<script src="../static/js/main.js"></script>
-</body>
-</html>
+
+</div>
+<div class="col-4">
+
+</div>
+
+{% endblock %}

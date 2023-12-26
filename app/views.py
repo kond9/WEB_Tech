@@ -43,5 +43,6 @@ def signup(request):
 def ask(request):
     return render(request, 'ask.html')
 
-
+def settings(request):
+    return render(request, 'settings.html')
 
