@@ -7,7 +7,7 @@
 <h1 style="display: inline-block; margin-right: 40px">New Questions</h1>
 <a href="{% url 'hot' %}" alt=""><h5 style="display: inline-block">Hot Questions</h5></a>
 
-{% for qadd uestion in questions %}
+{% for question in questions %}
 
 {% include 'components/question-item.html' %}
 
