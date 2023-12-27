@@ -1,26 +1,25 @@
 {% load static %}
 
-<div class="row question">
+<div class="row question" style="border: 3px solid grey">
     <div class="col-3">
-        <img src="{% static '/img/ico_avatar.png' %}" alt="" class="question-image">
+        <img src="../static/img/ico_avatar.png" alt="" class="question-image">
         <br>
         <button class="btn btn-primary">5</button>
         <button class="like-btn" style="display: inline-block;">
-            <img src="{% static '/img/like.png' %}" alt="" style="width: 20px;height: 22px;">
+            <img src="../static/img/like.png" alt="" style="width: 20px;height: 22px;">
         </button>
         <button class="like-btn" style="display: inline-block;">
-            <img src="{% static '/img/dislike_icon.png' %}" alt="" style="width: 20px;height: 22px;">
+            <img src="../static/img/dislike_icon.png" alt="" style="width: 20px;height: 22px;">
         </button>
 
     </div>
     <div class="col-9">
-        <div class="question-title"><a href="{% url 'question' question_id=question.id %}">{{question.title}}</a></div>
+        <sdiv class="question-title">{{question.title}}</sdiv>
         <div class="question-text">
             {{question.content}}
         </div>
         <br>
-        <a href="">answer (3)</a>
-        <p style="display: inline-block; margin-left: 40px">
+        <p style="display: inline-block;">
             Tags: <a href="{% url 'tag' tag_name='black-jack' %}">black-jack</a>
             <a href="{% url 'tag' tag_name='bender' %}">bender</a>
         </p>

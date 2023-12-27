@@ -39,12 +39,12 @@
                             </li>
                             <div class="col-6">
 
-                                <a class="nav-link" href="#">settings</a>
+                                <a class="nav-link" href="{% url 'settings' %}">settings</a>
 
                             </div>
                             <div class="col-6">
 
-                                <a class="nav-link" href="#">log out</a>
+                                <a class="nav-link" href="{% url 'index' %}">log out</a>
 
                             </div>
                         </div>
@@ -68,14 +68,14 @@
             <div class="row">
                 <h2>Popular Tags</h2>
                 <div class="tags mb-4">
-                    <button type="button" class="btn btn-outline-primary tags-button">perl</button>
-                    <button type="button" class="btn btn-outline-secondary tags-button">python</button>
-                    <button type="button" class="btn btn-outline-success tags-button">TechnoPark</button>
-                    <button type="button" class="btn btn-outline-danger tags-button">MySQL</button>
-                    <button type="button" class="btn btn-outline-warning tags-button">django</button>
-                    <button type="button" class="btn btn-outline-info tags-button">Mail.ru</button>
-                    <button type="button" class="btn btn-outline-dark tags-button">Voloshin</button>
-                    <button type="button" class="btn btn-outline-primary tags-button">Firefox</button>
+                    <button type="button" class="btn btn-outline-primary tags-button" onclick="document.location='{% url 'tag' tag_name='perl' %}'">perl</button>
+                    <button type="button" class="btn btn-outline-secondary tags-button" onclick="document.location='{% url 'tag' tag_name='perl' %}'">python</button>
+                    <button type="button" class="btn btn-outline-success tags-button" onclick="document.location='{% url 'tag' tag_name='perl' %}'">TechnoPark</button>
+                    <button type="button" class="btn btn-outline-danger tags-button" onclick="document.location='{% url 'tag' tag_name='perl' %}'">MySQL</button>
+                    <button type="button" class="btn btn-outline-warning tags-button" onclick="document.location='{% url 'tag' tag_name='perl' %}'">django</button>
+                    <button type="button" class="btn btn-outline-info tags-button" onclick="document.location='{% url 'tag' tag_name='perl' %}'">Mail.ru</button>
+                    <button type="button" class="btn btn-outline-dark tags-button" onclick="document.location='{% url 'tag' tag_name='perl' %}'">Voloshin</button>
+                    <button type="button" class="btn btn-outline-primary tags-button" onclick="document.location='{% url 'tag' tag_name='perl' %}'">Firefox</button>
                 </div>
 
                 <h2>Best Members</h2>

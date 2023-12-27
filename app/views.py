@@ -2,6 +2,7 @@ import math
 
 from django.shortcuts import render
 from django.core.paginator import Paginator
+from django.http import Http404
 
 QUESTIONS = [
     {
@@ -26,8 +27,13 @@ def index(request):
 
 
 def question(request, question_id):
+    try:
+        question = QUESTIONS[question_id]
+    except:
+        raise Http404("Question does not exist")
     item = QUESTIONS[question_id]
-    return render(request, 'question.html', {'question': item})
+    item_for_answer = QUESTIONS[question_id]
+    return render(request, 'question.html', {'question': item, 'answers': item_for_answer})
 
 
 def hot(request):
