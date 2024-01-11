@@ -95,10 +95,10 @@ class Command(BaseCommand):
                     temp_data_ques.append(q)
 
                 temp_data_profile.append(profile)
-
+            Like_for_question.objects.bulk_create(temp_data_like_q)
+            Like_for_answer.objects.bulk_create(temp_data_like_a)
         print('start')
-        Like_for_question.objects.bulk_create(temp_data_like_q)
-        Like_for_answer.objects.bulk_create(temp_data_like_a)
+
         Profile.objects.bulk_update(temp_data_profile, ['count_of_likes'])
         Question.objects.bulk_update(temp_data_ques, ['count_of_likes', 'count_of_answers'])
         Answer.objects.bulk_update(temp_data_ans, ['count_of_likes'])
