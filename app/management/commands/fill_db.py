@@ -21,44 +21,49 @@ class Command(BaseCommand):
         temp_data_like_a = []
         temp_data_profile = []
 
-        # for i in range(ratio):
-        #     user = User.objects.create_user(f'user-{i}')
-        #     user.save()
-        #
-        #     profile = Profile(user=user, nickname=f'nick-{i}cool', bio=f'I am user-{i}')
-        #     temp_data_profile.append(profile)
-        #
-        #     tag = Tag(tag_name=f'tag{i}')
-        #     temp_data_tag.append(tag)
-        # Profile.objects.bulk_create(temp_data_profile)
-        # Tag.objects.bulk_create(temp_data_tag)
-        #
-        # for i in range(ratio):
-        #     profile = Profile.objects.get(id=(i + 1))
-        #
-        #     for j in range(10):
-        #         q = Question(
-        #             question_title=f'What should I do, if I have {10 * i + j} questions?',
-        #             question_text=f'Recently I had a problem. As soon as I sit down to work, there are working people around me who disturb me. '
-        #                           f'Because of this, I have {j} questions out of {10 * i + j} that exist on the Internet.',
-        #             author=profile
-        #         )
-        #         temp_data_ques.append(q)
-        #         print(f'question {10 * i + j} created')
-        # Question.objects.bulk_create(temp_data_ques)
-        #
-        # temp_data_ques = []
+        for i in range(ratio):
+            user = User.objects.create_user(f'user-{i}')
+            user.save()
+
+            profile = Profile(user=user, nickname=f'nick-{i}cool', bio=f'I am user-{i}')
+            temp_data_profile.append(profile)
+
+            tag = Tag(tag_name=f'tag{i}')
+            temp_data_tag.append(tag)
+        Profile.objects.bulk_create(temp_data_profile)
+        Tag.objects.bulk_create(temp_data_tag)
+
+        for i in range(ratio):
+            profile = Profile.objects.get(id=(i + 1))
+
+            for j in range(10):
+                q = Question(
+                    question_title=f'What should I do, if I have {10 * i + j} questions?',
+                    question_text=f'Recently I had a problem. As soon as I sit down to work, there are working people around me who disturb me. '
+                                  f'Because of this, I have {j} questions out of {10 * i + j} that exist on the Internet.',
+                    author=profile
+                )
+                temp_data_ques.append(q)
+                print(f'question {10 * i + j} created')
+        Question.objects.bulk_create(temp_data_ques)
+
+        temp_data_ques = []
         for i in range(ratio):
             profile = Profile.objects.get(id=(i + 1))
             for j in range(10):
-                q = Question.objects.get(id=(10 * i + j + 184))
+                q = Question.objects.get(id=(10 * i + j + 1))
                 for k in range(10):
                     a = Answer(
                         answer_text=f'I think that you just need to rest and all your {(i * 10 + j) * 10 + k} questions out of all will go away)',
                         author=profile, question=q)
                     temp_data_ans.append(a)
-                    print(f'answer {i * 10 + j * 10 + k} created')
-        Answer.objects.bulk_update(temp_data_ans, ['answer_text', 'author', 'question'])
+                    print(f'answer {(i * 10 + j) * 10 + k} created')
+                    # if (i*10 +j)*10+k==900089:
+                    #     Answer.objects.bulk_update(temp_data_ans, ['answer_text', 'author', 'question'])
+                    #     temp_data_ans=[]
+
+
+        Answer.objects.bulk_create(temp_data_ans)
         print('DATA BASE')
         temp_data_ques = []
         temp_data_ans = []
@@ -68,7 +73,7 @@ class Command(BaseCommand):
             profile = Profile.objects.get(id=(i + 1))
             t = Tag.objects.get(id=(i + 1))
             for j in range(10):
-                q = Question.objects.get(id=(10 * i + j + 184))
+                q = Question.objects.get(id=(10 * i + j + 1))
                 q.tags.add(t)
 
                 l = Like_for_question(profile=profile, question=q, value=random.choice([1, - 1]))
@@ -97,6 +102,5 @@ class Command(BaseCommand):
         Profile.objects.bulk_update(temp_data_profile, ['count_of_likes'])
         Question.objects.bulk_update(temp_data_ques, ['count_of_likes', 'count_of_answers'])
         Answer.objects.bulk_update(temp_data_ans, ['count_of_likes'])
-
 
         print('finish')
