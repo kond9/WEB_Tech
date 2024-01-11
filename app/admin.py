@@ -1,10 +1,5 @@
 from django.contrib import admin
-from .models import Question
-from .models import Answer
-from .models import Tag
-from .models import Like_for_question
-from .models import Like_for_answer
-from .models import Profile
+from .models import Question, Answer, Tag, Like_for_question, Like_for_answer, Profile
 # Register your models here.
 admin.site.register(Question),
 admin.site.register(Answer),
