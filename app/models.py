@@ -15,6 +15,7 @@ class Question(models.Model):
     def __str__(self):
         return self.question_title
 
+
 class Answer(models.Model):
     answer_text = models.CharField(max_length=255)
     author = models.ForeignKey('Profile', null=True, on_delete=models.SET_NULL)
@@ -26,6 +27,7 @@ class Answer(models.Model):
     def __str__(self):
         return self.answer_text
 
+
 class Tag(models.Model):
     tag_name = models.CharField(max_length=255)
 
@@ -36,13 +38,13 @@ class Tag(models.Model):
 class Like_for_question(models.Model):
     profile = models.ForeignKey('Profile', on_delete=models.SET_NULL, null=True)
     question = models.ForeignKey('Question', related_name='like_for_ques', on_delete=models.CASCADE)
-    value = models.IntegerField(max_length=2, blank=True)
+    value = models.IntegerField(blank=True)
 
 
 class Like_for_answer(models.Model):
     profile = models.ForeignKey('Profile', on_delete=models.SET_NULL, null=True)
     answer = models.ForeignKey('Answer', related_name='like_for_ans', on_delete=models.CASCADE)
-    value = models.IntegerField(max_length=2, blank=True)
+    value = models.IntegerField(blank=True)
 
 
 class Profile(models.Model):
@@ -56,4 +58,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-

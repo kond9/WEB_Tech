@@ -20,12 +20,21 @@ class Command(BaseCommand):
         temp_data_like_q = []
         temp_data_like_a = []
         temp_data_profile = []
+
         for i in range(ratio):
             user = User.objects.create_user(f'user-{i}')
-            profile = Profile(user=user, nickname=f'nick-{i}cool', bio=f'I am user-{i}')
-            tag = Tag(tag_name=f'tag{i}')
+            user.save()
 
+            profile = Profile(user=user, nickname=f'nick-{i}cool', bio=f'I am user-{i}')
+            temp_data_profile.append(profile)
+
+            tag = Tag(tag_name=f'tag{i}')
             temp_data_tag.append(tag)
+        Profile.objects.bulk_create(temp_data_profile)
+        Tag.objects.bulk_create(temp_data_tag)
+
+        for i in range(ratio):
+            profile = Profile.objects.get(pk=(i + 1))
 
             for j in range(10):
                 q = Question(
@@ -34,13 +43,34 @@ class Command(BaseCommand):
                                   f'Because of this, I have {j} questions out of {10 * i + j} that exist on the Internet.',
                     author=profile
                 )
-                q.tags.add(tag)
+                temp_data_ques.append(q)
+        Question.objects.bulk_create(temp_data_ques)
 
+        temp_data_ques = []
+        for i in range(ratio):
+            profile = Profile.objects.get(pk=(i + 1))
+            for j in range(10):
+                q = Question.objects.get(pk=(10 * i + j + 1))
                 for k in range(9):
-                    a = Answer(answer_text=f'I think that you just need to rest and all your (i * 10 + j) * 10 + k} questions out of all will go away)',
-                               author=profile, question=q)
+                    a = Answer(
+                        answer_text=f'I think that you just need to rest and all your {(i * 10 + j) * 10 + k} questions out of all will go away)',
+                        author=profile, question=q)
+                    temp_data_ans.append(a)
+        Answer.objects.bulk_create(temp_data_ans)
 
-                    l = Like_for_question(profile=profile, question=q, value=random.choice([1 -1]))
+        temp_data_ques = []
+        temp_data_ans = []
+        temp_data_profile = []
+
+        for i in range(ratio):
+            profile = Profile.objects.get(pk=i + 1)
+            t = Tag.objects.get(pk=i + 1)
+            for j in range(10):
+                q = Question.objects.get(pk=(10 * i + j + 1))
+                q.tags.add(t)
+                for k in range(9):
+                    a = Answer.objects.get(pk=((i * 10 + j) * 10 + k + 1))
+                    l = Like_for_question(profile=profile, question=q, value=random.choice([1, - 1]))
 
                     q.count_of_likes += int(l.value)
                     q.count_of_answers += 1
@@ -50,22 +80,21 @@ class Command(BaseCommand):
 
                     l2 = Like_for_answer(profile=profile, answer=a, value=random.choice([1, -1]))
                     a.count_of_likes += int(l2.value)
+                    profile.count_of_likes += int(l2.value)
 
-                    temp_data_like_a.append(l2)
                     temp_data_ans.append(a)
-                print(f'question {i} created')
+                    temp_data_like_a.append(l2)
 
                 temp_data_ques.append(q)
-
+                print(f'question {10 * i + j} created')
             temp_data_profile.append(profile)
 
         print('start')
 
-        Profile.objects.bulk_create(temp_data_profile)
-        Tag.objects.bulk_create(temp_data_tag)
-        Question.objects.bulk_create(temp_data_profile)
-        Answer.objects.bulk_create(temp_data_profile)
-        Like_for_question.objects.bulk_create(temp_data_profile)
-        Like_for_answer.objects.bulk_create(temp_data_profile)
+        Profile.objects.bulk_update(temp_data_profile, ['count_of_likes'])
+        Question.objects.bulk_update(temp_data_ques, ['count_of_likes', 'count_of_answers'])
+        Answer.objects.bulk_update(temp_data_ans, ['count_of_likes'])
+        Like_for_question.objects.bulk_create(temp_data_like_q)
+        Like_for_answer.objects.bulk_create(temp_data_like_a)
 
         print('finish')
