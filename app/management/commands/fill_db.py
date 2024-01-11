@@ -62,39 +62,39 @@ class Command(BaseCommand):
                     #     Answer.objects.bulk_update(temp_data_ans, ['answer_text', 'author', 'question'])
                     #     temp_data_ans=[]
 
-
         Answer.objects.bulk_create(temp_data_ans)
         print('DATA BASE')
+
         temp_data_ques = []
         temp_data_ans = []
         temp_data_profile = []
+        for s in range(10):
+            profile = Profile.objects.get(id=(s + 1))
+            t = Tag.objects.get(id=(s + 1))
+            for i in range(ratio):
+                for j in range(10):
+                    q = Question.objects.get(id=(10 * i + j + 1))
+                    q.tags.add(t)
 
-        for i in range(ratio):
-            profile = Profile.objects.get(id=(i + 1))
-            t = Tag.objects.get(id=(i + 1))
-            for j in range(10):
-                q = Question.objects.get(id=(10 * i + j + 1))
-                q.tags.add(t)
+                    l = Like_for_question(profile=profile, question=q, value=random.choice([1, - 1]))
 
-                l = Like_for_question(profile=profile, question=q, value=random.choice([1, - 1]))
+                    q.count_of_likes += int(l.value)
+                    q.count_of_answers += 1
+                    profile.count_of_likes += int(l.value)
+                    temp_data_like_q.append(l)
 
-                q.count_of_likes += int(l.value)
-                q.count_of_answers += 1
-                profile.count_of_likes += int(l.value)
-                temp_data_like_q.append(l)
+                    for k in range(2):
+                        a = Answer.objects.get(id=((i * 10 + j) * 10 + k + 1))
+                        l2 = Like_for_answer(profile=profile, answer=a, value=random.choice([1, -1]))
+                        a.count_of_likes += int(l2.value)
+                        profile.count_of_likes += int(l2.value)
 
-                for k in range(10):
-                    a = Answer.objects.get(id=((i * 10 + j) * 10 + k + 1))
-                    l2 = Like_for_answer(profile=profile, answer=a, value=random.choice([1, -1]))
-                    a.count_of_likes += int(l2.value)
-                    profile.count_of_likes += int(l2.value)
+                        temp_data_ans.append(a)
+                        temp_data_like_a.append(l2)
+                        print(f'like {(i * 10 + j) * 10 + k} created')
+                    temp_data_ques.append(q)
 
-                    temp_data_ans.append(a)
-                    temp_data_like_a.append(l2)
-                    print(f'like {(i * 10 + j) * 10 + k} created')
-                temp_data_ques.append(q)
-
-            temp_data_profile.append(profile)
+                temp_data_profile.append(profile)
 
         print('start')
         Like_for_question.objects.bulk_create(temp_data_like_q)
