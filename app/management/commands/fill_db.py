@@ -34,7 +34,7 @@ class Command(BaseCommand):
         Tag.objects.bulk_create(temp_data_tag)
 
         for i in range(ratio):
-            profile = Profile.objects.get(pk=(i + 1))
+            profile = Profile.objects.get(id=(i + 1))
 
             for j in range(10):
                 q = Question(
@@ -44,13 +44,14 @@ class Command(BaseCommand):
                     author=profile
                 )
                 temp_data_ques.append(q)
+                print(f'question {10 * i + j} created')
         Question.objects.bulk_create(temp_data_ques)
 
         temp_data_ques = []
         for i in range(ratio):
-            profile = Profile.objects.get(pk=(i + 1))
+            profile = Profile.objects.get(id=(i + 1))
             for j in range(10):
-                q = Question.objects.get(pk=(10 * i + j + 1))
+                q = Question.objects.get(id=(10 * i + j + 1))
                 for k in range(9):
                     a = Answer(
                         answer_text=f'I think that you just need to rest and all your {(i * 10 + j) * 10 + k} questions out of all will go away)',
@@ -63,13 +64,13 @@ class Command(BaseCommand):
         temp_data_profile = []
 
         for i in range(ratio):
-            profile = Profile.objects.get(pk=i + 1)
-            t = Tag.objects.get(pk=i + 1)
+            profile = Profile.objects.get(id=(i + 1))
+            t = Tag.objects.get(id=(i + 1))
             for j in range(10):
-                q = Question.objects.get(pk=(10 * i + j + 1))
+                q = Question.objects.get(id=(10 * i + j + 1))
                 q.tags.add(t)
                 for k in range(9):
-                    a = Answer.objects.get(pk=((i * 10 + j) * 10 + k + 1))
+                    a = Answer.objects.get(id=((i * 10 + j) * 10 + k + 1))
                     l = Like_for_question(profile=profile, question=q, value=random.choice([1, - 1]))
 
                     q.count_of_likes += int(l.value)
@@ -86,7 +87,7 @@ class Command(BaseCommand):
                     temp_data_like_a.append(l2)
 
                 temp_data_ques.append(q)
-                print(f'question {10 * i + j} created')
+
             temp_data_profile.append(profile)
 
         print('start')
