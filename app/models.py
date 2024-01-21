@@ -15,6 +15,7 @@ class QuestionQuerySet(models.QuerySet):
         return self.filter(tags__tag_name=question_tag)
     def get_question_by_pk(self, question_pk):
         return self.get(pk=question_pk)
+
 class QuestionManager(models.Manager):
     def get_queryset(self):
         return QuestionQuerySet(self.model)
