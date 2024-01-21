@@ -4,7 +4,7 @@
     <div class="col-3">
         <img src="../static/img/ico_avatar.png" alt="" class="question-image">
         <br>
-        <button class="btn btn-primary">5</button>
+        <button class="btn btn-primary">{{question.count_of_likes}}</button>
         <button class="like-btn" style="display: inline-block;">
             <img src="../static/img/like.png" alt="" style="width: 20px;height: 22px;">
         </button>
@@ -14,14 +14,16 @@
 
     </div>
     <div class="col-9">
-        <sdiv class="question-title">{{question.title}}</sdiv>
+        <sdiv class="question-title">{{question.question_title}}</sdiv>
         <div class="question-text">
-            {{question.content}}
+            {{question.question_text}}
         </div>
         <br>
         <p style="display: inline-block;">
-            Tags: <a href="{% url 'tag' tag_name='black-jack' %}">black-jack</a>
-            <a href="{% url 'tag' tag_name='bender' %}">bender</a>
+            Tags:
+            {% for tag in question.tags.all %}
+            <a href="{% url 'tag' tag.tag_name %}">{{ tag.tag_name }}</a>
+            {% endfor %}
         </p>
     </div>
 </div>

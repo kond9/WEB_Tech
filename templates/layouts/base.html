@@ -1,5 +1,4 @@
 {% load static %}
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -71,38 +70,39 @@
                 <h2>Popular Tags</h2>
                 <div class="tags mb-4">
                     <button type="button" class="btn btn-outline-primary tags-button"
-                            onclick="document.location='{% url 'tag' tag_name='perl' %}'">perl
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary tags-button"
-                            onclick="document.location='{% url 'tag' tag_name='python' %}'">python
-                    </button>
-                    <button type="button" class="btn btn-outline-success tags-button"
-                            onclick="document.location='{% url 'tag' tag_name='TechnoPark' %}'">TechnoPark
-                    </button>
-                    <button type="button" class="btn btn-outline-danger tags-button"
-                            onclick="document.location='{% url 'tag' tag_name='MySQL' %}'">MySQL
-                    </button>
-                    <button type="button" class="btn btn-outline-warning tags-button"
-                            onclick="document.location='{% url 'tag' tag_name='django' %}'">django
-                    </button>
-                    <button type="button" class="btn btn-outline-info tags-button"
-                            onclick="document.location='{% url 'tag' tag_name='Mail.ru' %}'">Mail.ru
-                    </button>
-                    <button type="button" class="btn btn-outline-dark tags-button"
-                            onclick="document.location='{% url 'tag' tag_name='Voloshin' %}'">Voloshin
+                            onclick="document.location='{% url 'tag' 'tag0' %}'">tag0
                     </button>
                     <button type="button" class="btn btn-outline-primary tags-button"
-                            onclick="document.location='{% url 'tag' tag_name='Firefox' %}'">Firefox
+                            onclick="document.location='{% url 'tag' 'tag1  ' %}'">tag1
                     </button>
+                    <button type="button" class="btn btn-outline-primary tags-button"
+                            onclick="document.location='{% url 'tag' 'tag2' %}'">tag2
+                    </button>
+                    <button type="button" class="btn btn-outline-primary tags-button"
+                            onclick="document.location='{% url 'tag' 'tag3' %}'">tag3
+                    </button>
+                    <button type="button" class="btn btn-outline-primary tags-button"
+                            onclick="document.location='{% url 'tag' 'tag4' %}'">tag4
+                    </button>
+                    <button type="button" class="btn btn-outline-primary tags-button"
+                            onclick="document.location='{% url 'tag' 'tag5' %}'">tag5
+                    </button>
+                    <!--                    {% with Tag.object.all as tags %}-->
+                    <!--                    {% for t in tags %}-->
+                    <!--                    <button type="button" class="btn btn-outline-primary tags-button"-->
+                    <!--                            onclick="document.location='{% url 'tag' t.tag_name %}'">{{t.tag_name}}-->
+                    <!--                    </button>-->
+                    <!--                    {% endfor %}-->
+                    <!--                    {% endwith %}-->
                 </div>
 
                 <h2>Best Members</h2>
                 <ul class="list-group mb-4" style="margin-left: 20px; max-width: 200px; ">
-                    <li class="list-group-item"><a href="">Mr.Freeman</a></li>
-                    <li class="list-group-item"><a href="">Dr.House</a></li>
-                    <li class="list-group-item"><a href="">Bender</a></li>
-                    <li class="list-group-item"><a href="">Queen Victoria</a></li>
-                    <li class="list-group-item"><a href="">V.Pupkin</a></li>
+                    <li class="list-group-item"><a href="">user2</a></li>
+                    <li class="list-group-item"><a href="">user8</a></li>
+                    <li class="list-group-item"><a href="">user6</a></li>
+                    <li class="list-group-item"><a href="">user1</a></li>
+                    <li class="list-group-item"><a href="">user5</a></li>
                 </ul>
             </div>
         </div>

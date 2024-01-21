@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+
+#class QuestionManager(models.Manager):
+
+
 class Question(models.Model):
     question_title = models.CharField(max_length=255)
     question_text = models.TextField(blank=True)

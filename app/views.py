@@ -3,17 +3,11 @@ import math
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.http import Http404
-
-QUESTIONS = [
-    {
-        'id': i,
-        'title': f'Question {i}',
-        'content': f'Long lorem ipsum {i}'
-    } for i in range(40)
-]
+from app.models import Question, Answer, Tag, Profile
+from django.views import generic
 
 
-def paginate(objects_list, request, per_page=30):
+def paginate(objects_list, request, per_page=20):
     paginator = Paginator(objects_list, per_page)
     page = request.GET.get('page', 1)
     if str(page).isdigit() and int(page) <= int(math.ceil(len(objects_list) / per_page)):
@@ -23,25 +17,28 @@ def paginate(objects_list, request, per_page=30):
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html', {'questions': paginate(QUESTIONS, request)})
+    questions = Question.objects.order_by('-pub_date')
+    return render(request, 'index.html', {'questions': paginate(questions, request)})
+
 
 
 def question(request, question_id):
     try:
-        question = QUESTIONS[question_id]
+        question_item = Question.objects.get(pk=question_id)
     except:
         raise Http404("Question does not exist")
-    item = QUESTIONS[question_id]
-    item_for_answer = QUESTIONS[question_id]
-    return render(request, 'question.html', {'question': item, 'answers': item_for_answer})
+    answers = Answer.objects.filter(question=question_item)
+    return render(request, 'question.html', {'question': question_item, 'answers': paginate(answers, request, 30)})
 
 
 def hot(request):
-    return render(request, 'hot.html', {'questions': paginate(QUESTIONS, request)})
+    questions = Question.objects.order_by('-count_of_likes')
+    return render(request, 'hot.html', {'questions': paginate(questions, request)})
 
 
 def tag(request, tag_name):
-    return render(request, 'tag.html', {'questions': paginate(QUESTIONS, request), 'tag': tag_name})
+    questions_by_tag = Question.objects.filter(tags__tag_name=tag_name)
+    return render(request, 'tag.html', {'questions': paginate(questions_by_tag, request), 'tag': tag_name})
 
 
 def login(request):
@@ -58,3 +55,4 @@ def ask(request):
 
 def settings(request):
     return render(request, 'settings.html')
+
