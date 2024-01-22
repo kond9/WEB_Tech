@@ -18,9 +18,9 @@
             <div class="col-3"></div>
 
             <div class="col-3">
-                <form class="d-flex" role="search">
+                <form action="{% url 'ask' %}" class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" onclick="document.location='{% url 'ask' %}'" type="submit">
+                    <button class="btn btn-outline-success" onclick="href='{% url 'ask' %}'" type="submit">
                         ASK!
                     </button>
                 </form>
