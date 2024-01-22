@@ -5,43 +5,19 @@
 {% block content %}
 <div class="col-5">
     <h1 style="display: inline-block; margin-right: 40px">Log In</h1>
-    <p class="text-danger" style="font-size: 20px;">Sorry, wrong password!</p>
-
-    <div class="row g-3 align-items-center mb-3">
-        <div class="col-3">
-            <label for="inputPassword6" class="col-form-label" style="font-weight: bold">Login</label>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="usernameHelp">
+            <div id="usernameHelp" class="form-text">We'll never share your username with anyone else.</div>
         </div>
-        <div class="col-auto">
-            <input type="email" id="inputEmail" class="form-control" style="border: 2px solid grey"
-                   placeholder="Enter your login here">
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
         </div>
-
-    </div>
-    <div class="row g-3 align-items-center mb-3">
-        <div class="col-3">
-            <label for="inputPassword6" class="col-form-label" style="font-weight: bold">Password</label>
-        </div>
-        <div class="col-auto">
-            <input type="password" id="inputPassword6" class="form-control" style="border: 2px solid grey"
-                   aria-describedby="passwordHelpInline" placeholder="Enter your password here">
-        </div>
-        <div class="col-auto">
-    <span id="passwordHelpInline" class="form-text">
-      Must be 8-20 characters long.
-    </span>
-        </div>
-    </div>
-    <div class="row g-3 align-items-center mb-3">
-        <div class="col-2"></div>
-        <br>
-        <div class="col-10">
-            <button class="btn btn-success">Log in!</button>
-            <br>
-            <br>
-            <a href="{% url 'signup' %}">create new account</a>
-        </div>
-    </div>
-
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 <div class="col-4">
 

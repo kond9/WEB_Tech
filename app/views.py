@@ -1,11 +1,15 @@
 import math
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.http import Http404
-from app.models import Question, Answer, Tag, Profile, QuestionManager
-from django.views import generic
 
+
+from .models import Question, Answer, Tag, Profile, QuestionManager
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
+from django.urls import reverse
 
 def paginate(objects_list, request, per_page=20):
     paginator = Paginator(objects_list, per_page)
@@ -41,7 +45,15 @@ def tag(request, tag_name):
     return render(request, 'tag.html', {'questions': paginate(questions_by_tag, request), 'tag': tag_name})
 
 
-def login(request):
+def log_in(request):
+    print(request.GET)
+    print(request.POST)
+    username=request.POST['username']
+    password=request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect(reverse('index'))
     return render(request, 'login.html')
 
 
