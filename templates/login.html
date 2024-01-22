@@ -1,21 +1,17 @@
 {% extends 'layouts/base.html' %}
 
 {% load static %}
-
+{% load django_bootstrap5 %}
 {% block content %}
 <div class="col-5">
-    <h1 style="display: inline-block; margin-right: 40px">Log In</h1>
+
+        <h1 style="display: inline-block; margin-right: 40px">Log In</h1>
+        <a href="{% url 'signup' %}" alt=""><h3 style="display: inline-block">Sign Up</h3></a>
+
+
     <form method="POST">
         {% csrf_token %}
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="usernameHelp">
-            <div id="usernameHelp" class="form-text">We'll never share your username with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-        </div>
+        {% bootstrap_form form%}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
