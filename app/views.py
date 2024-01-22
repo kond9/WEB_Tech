@@ -1,5 +1,6 @@
 import math
 
+from django.contrib import auth
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.http import Http404
@@ -48,14 +49,20 @@ def tag(request, tag_name):
 def log_in(request):
     print(request.GET)
     print(request.POST)
-    username=request.POST['username']
-    password=request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect(reverse('index'))
+    if request.method == 'POST':
+        username=request.POST['username']
+        password=request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        print(user)
+        if user is not None:
+            login(request, user)
+            print('Successfully logged in')
+            return redirect(reverse('index'))
     return render(request, 'login.html')
 
+def log_out(request):
+    auth.logout(request)
+    return redirect(reverse('login'))
 
 def signup(request):
     return render(request, 'signup.html')
