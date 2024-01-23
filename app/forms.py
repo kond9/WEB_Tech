@@ -44,6 +44,7 @@ class RegisterForm(forms.ModelForm):
         if User.objects.filter(username=username).exists():
             raise ValidationError('User already exists!')
 
+
     def save(self, **kwargs):
         self.cleaned_data.pop('password_check')
         return User.objects.create_user(**self.cleaned_data)

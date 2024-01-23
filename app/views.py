@@ -82,6 +82,7 @@ def signup(request):
             print('qq')
             user = user_form.save()
             print(user)
+
             if user:
                 return redirect(reverse('index'))
             else:
