@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.http import Http404
 
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, QuestionForm
 from .models import Question, Answer, Tag, Profile, QuestionManager
 from django.contrib.auth import login, authenticate
 from django.template import RequestContext
@@ -91,7 +91,27 @@ def signup(request):
 
 
 def ask(request):
-    return render(request, 'ask.html')
+    print(request.GET)
+    print(request.POST)
+    if request.method == 'GET':
+        question_form = QuestionForm()
+    if request.method == 'POST':
+        question_form = QuestionForm(request.POST)
+        if question_form.is_valid():
+            print('qq')
+
+            question_form.save()
+            return render(request, 'ask.html')
+            # else:
+            #     question_form.add_error(None, "Question saving error!")
+    return render(request, 'ask.html', context={"form": question_form})
+    # if request.method == 'POST':
+    #     question_title=request.POST['title']
+    #     question_text=request.POST['text']
+    #     tags=request.POST['tags']
+    #     print(question_title, question_text, tags)
+    # return render(request, 'ask.html')
+
 
 
 def settings(request):
