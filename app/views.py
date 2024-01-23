@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.http import Http404
 
-from .forms import LoginForm, RegisterForm, QuestionForm
+from .forms import LoginForm, RegisterForm, QuestionForm, AnswerForm
 from .models import Question, Answer, Tag, Profile, QuestionManager
 from django.contrib.auth import login, authenticate
 from django.template import RequestContext
@@ -33,8 +33,26 @@ def question(request, question_id):
         question_item = Question.mymanager.get_question_by_pk(question_id)
     except:
         raise Http404("Question does not exist")
+
     answers = Answer.mymanager.get_answers_by_id(question_item)
-    return render(request, 'question.html', {'question': question_item, 'answers': paginate(answers, request, 30)})
+    if request.method == 'GET':
+        answer_form = AnswerForm()
+    if request.method == 'POST':
+        answer_form = AnswerForm(request.POST)
+        if answer_form.is_valid():
+            print('qq')
+            print(answer_form.cleaned_data)
+            answer_form.save()
+            # print(answer)
+
+            # if answer:
+            return render(request, 'question.html',
+                          {'question': question_item, 'answers': paginate(answers, request, 30),
+                           'form': answer_form})
+            # else:
+            #     answer_form.add_error(None, "Answer saving error!")
+    return render(request, 'question.html',
+                  {'question': question_item, 'answers': paginate(answers, request, 30), 'form': answer_form})
 
 
 def hot(request):
@@ -112,7 +130,6 @@ def ask(request):
     #     tags=request.POST['tags']
     #     print(question_title, question_text, tags)
     # return render(request, 'ask.html')
-
 
 
 def settings(request):

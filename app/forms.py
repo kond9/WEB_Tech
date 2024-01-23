@@ -75,6 +75,10 @@ class QuestionForm(forms.ModelForm):
             w1.tags.add(tag)
         return w1
 
-
-
+class AnswerForm(forms.ModelForm):
+    class Meta:
+        model = Answer
+        fields = ['answer_text']
+    def save(self, **kwargs):
+        return Answer.objects.create(**self.cleaned_data)
 
