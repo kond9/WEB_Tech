@@ -100,10 +100,11 @@ def ask(request):
         if question_form.is_valid():
             print('qq')
 
-            question_form.save()
-            return render(request, 'ask.html')
-            # else:
-            #     question_form.add_error(None, "Question saving error!")
+            quetion = question_form.save()
+            if question:
+                return render(request, 'ask.html')
+            else:
+                question_form.add_error(None, "Question saving error!")
     return render(request, 'ask.html', context={"form": question_form})
     # if request.method == 'POST':
     #     question_title=request.POST['title']
