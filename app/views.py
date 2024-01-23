@@ -79,6 +79,7 @@ def signup(request):
     if request.method == 'POST':
         user_form = RegisterForm(request.POST)
         if user_form.is_valid():
+            print('qq')
             user = user_form.save()
             print(user)
             if user:

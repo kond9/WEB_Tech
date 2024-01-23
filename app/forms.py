@@ -27,16 +27,22 @@ class LoginForm(forms.Form):
 
 
 class RegisterForm(forms.ModelForm):
-    password=forms.CharField(min_length=4, widget=forms.PasswordInput)
-    password_check=forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(min_length=4, widget=forms.PasswordInput)
+    password_check = forms.CharField(widget=forms.PasswordInput)
+
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
+
     def clean(self):
-        password=self.cleaned_data['password']
-        password_check=self.cleaned_data['password_check']
+        password = self.cleaned_data['password']
+        password_check = self.cleaned_data['password_check']
         if password != password_check:
             raise ValidationError('Password do not match')
+
+        username = self.cleaned_data['username']
+        if User.objects.filter(username=username).exists():
+            raise ValidationError('User already exists!')
 
     def save(self, **kwargs):
         self.cleaned_data.pop('password_check')
