@@ -42,15 +42,13 @@ def question(request, question_id):
         if answer_form.is_valid():
             print('qq')
             print(answer_form.cleaned_data)
-            answer_form.save(question=question_item)
-            # print(answer)
+            answer = answer_form.save(question=question_item)
+            print(answer)
 
-            # if answer:
-            return render(request, 'question.html',
-                          {'question': question_item, 'answers': paginate(answers, request, 30),
-                           'form': answer_form})
-            # else:
-            #     answer_form.add_error(None, "Answer saving error!")
+            if answer:
+                return redirect('question', question_id=question_id)
+            else:
+                answer_form.add_error(None, "Answer saving error!")
     return render(request, 'question.html',
                   {'question': question_item, 'answers': paginate(answers, request, 30), 'form': answer_form})
 
