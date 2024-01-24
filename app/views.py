@@ -114,6 +114,10 @@ def ask(request):
         if question_form.is_valid():
             print('qq')
             question = question_form.save()
+            if question:
+                return redirect('question', question_id=question.id)
+            else:
+                question_form.add_error(None, "Question saving error!")
             # if question:
             #     return render(request, 'ask.html')
             # else:

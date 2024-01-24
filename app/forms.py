@@ -65,6 +65,8 @@ class QuestionForm(forms.ModelForm):
             question.tags.add(tag)
 
         return question
+    def get_absolute_url(self):
+        return reverse('question', args=[str(self.id)])
 
 
 class AnswerForm(forms.ModelForm):
