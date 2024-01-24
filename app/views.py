@@ -109,20 +109,18 @@ def signup(request):
 
 
 def ask(request):
-    print(request.GET)
-    print(request.POST)
     if request.method == 'GET':
         question_form = QuestionForm()
-    if request.method == 'POST':
+    elif request.method == 'POST':
         question_form = QuestionForm(request.POST)
         if question_form.is_valid():
             print('qq')
+            question = question_form.save()
+            # if question:
+            #     return render(request, 'ask.html')
+            # else:
+            #     question_form.add_error(None, "Question saving error!")
 
-            quetion = question_form.save()
-            if question:
-                return render(request, 'ask.html')
-            else:
-                question_form.add_error(None, "Question saving error!")
     return render(request, 'ask.html', context={"form": question_form})
     # if request.method == 'POST':
     #     question_title=request.POST['title']

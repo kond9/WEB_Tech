@@ -53,32 +53,24 @@ class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
         fields = ['question_title', 'question_text', 'tags']
-    # def get_absolute_url(self):
-    #     return reverse('question', kwargs={int(self.})
 
-    # def clean(self):
-    #     password = self.cleaned_data['password']
-    #     password_check = self.cleaned_data['password_check']
-    #     if password != password_check:
-    #         raise ValidationError('Password do not match')
-    #
-    #     username = self.cleaned_data['username']
-    #     if User.objects.filter(username=username).exists():
-    #         raise ValidationError('User already exists!')
-    def save(self, **kwargs):
-        tag_list=[]
-        for tag in self.cleaned_data['tags']:
-            tag_list.append(tag)
-        self.cleaned_data.pop('tags')
-        w1 = Question.objects.create(**self.cleaned_data)
+    def save(self, commit=True):
+        question = super().save(commit=False)
+        tag_list = self.cleaned_data.get('tags')
+
+        if commit:
+            question.save()
+
         for tag in tag_list:
-            w1.tags.add(tag)
-        return w1
+            question.tags.add(tag)
+
+        return question
+
 
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         fields = ['answer_text']
+
     def save(self, question, **kwargs):
         return Answer.objects.create(question=question, **self.cleaned_data)
-
