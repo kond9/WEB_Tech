@@ -42,7 +42,7 @@ def question(request, question_id):
         if answer_form.is_valid():
             print('qq')
             print(answer_form.cleaned_data)
-            answer_form.save()
+            answer_form.save(question=question_item)
             # print(answer)
 
             # if answer:

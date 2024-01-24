@@ -79,6 +79,6 @@ class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         fields = ['answer_text']
-    def save(self, **kwargs):
-        return Answer.objects.create(**self.cleaned_data)
+    def save(self, question, **kwargs):
+        return Answer.objects.create(question=question, **self.cleaned_data)
 
